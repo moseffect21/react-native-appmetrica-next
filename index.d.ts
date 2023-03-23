@@ -44,32 +44,28 @@ type Location = {
 
 type AppMetricaDeviceIdReason = "UNKNOWN" | "NETWORK" | "INVALID_RESPONSE";
 
-type EcommerceShowScreenParams = {
+type Screen = {
   screenName: string;
   searchQuery?: string;
 };
 
-type EcommerceShowProductCardParams = {
-  screenName: string;
-  searchQuery?: string;
-  price: string;
-  currency: "RUB" | "USD" | "EUR";
-  sku: string;
+type ProductCard = {
   name: string;
+  sku: string;
+  currency: "RUB" | "USD" | "EUR";
+  price: string;
+  categoriesPath?: Array<string>;
+  payload?: Object<any>;
 };
 
-type EcommerceCartParams = {
-  screenName: string;
-  searchQuery?: string;
-  price: string;
-  currency: "RUB" | "USD" | "EUR";
-  sku: string;
-  name: string;
-  quantity: string;
-};
+type EcommerceShowScreenParams = Screen;
+
+type EcommerceShowProductCardParams = Screen & ProductCard;
+
+type EcommerceCartParams = Screen & ProductCard;
 
 declare module "react-native-appmetrica-next" {
-  const activate: (params: YandexActivateProps) => void;
+  const activate: (params: AppMetricaConfig) => void;
   const initPush: (token?: string) => void;
   const getToken: () => string;
   const reportUserProfile: (config: UserProfileConfig) => void;
@@ -92,6 +88,12 @@ declare module "react-native-appmetrica-next" {
   const showProductCard: (params: EcommerceShowProductCardParams) => void;
   const addToCart: (params: EcommerceCartParams) => void;
   const removeFromCart: (params: EcommerceCartParams) => void;
-  const beginCheckout: (products: any, identifier: string) => void;
-  const finishCheckout: (products: any, identifier: string) => void;
+  const beginCheckout: (
+    products: Array<EcommerceCartParams>,
+    identifier: string
+  ) => void;
+  const finishCheckout: (
+    products: Array<EcommerceCartParams>,
+    identifier: string
+  ) => void;
 }
