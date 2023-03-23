@@ -163,10 +163,10 @@ abstract class Utils {
             jsonArray.put(i, readableArray.getString(i));
             break;
             case Map:
-            jsonArray.put(i, MapUtil.toJSONObject(readableArray.getMap(i)));
+            jsonArray.put(i, this.toJSONObject(readableArray.getMap(i)));
             break;
             case Array:
-            jsonArray.put(i, ArrayUtil.toJSONArray(readableArray.getArray(i)));
+            jsonArray.put(i, this.toJSONArray(readableArray.getArray(i)));
             break;
         }
         }
@@ -197,10 +197,10 @@ abstract class Utils {
             jsonObject.put(key, readableMap.getString(key));
             break;
             case Map:
-            jsonObject.put(key, MapUtil.toJSONObject(readableMap.getMap(key)));
+            jsonObject.put(key, this.toJSONObject(readableMap.getMap(key)));
             break;
             case Array:
-            jsonObject.put(key, ArrayUtil.toJSONArray(readableMap.getArray(key)));
+            jsonObject.put(key, this.toJSONArray(readableMap.getArray(key)));
             break;
         }
         }
