@@ -54,6 +54,7 @@ type ProductCard = {
   sku: string;
   currency: "RUB" | "USD" | "EUR";
   price: string;
+  quantity: string;
   categoriesPath?: Array<string>;
   payload?: Object<any>;
 };
