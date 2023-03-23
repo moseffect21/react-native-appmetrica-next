@@ -17,9 +17,6 @@ import com.yandex.metrica.YandexMetricaConfig;
 import com.yandex.metrica.profile.GenderAttribute;
 import com.yandex.metrica.profile.UserProfile;
 import com.yandex.metrica.profile.Attribute;
-import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.ReadableNativeMap;
-import com.facebook.react.bridge.ReadableNativeMapKeySetIterator;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -146,33 +143,18 @@ abstract class Utils {
         return builder.build();
     }
 
-    public static Map<String, Object>unwrapMap(ReadableMap readableMap) {
-        ReadableNativeMap map = (ReadableNativeMap) readableMap;
-        ReadableNativeMapKeySetIterator iterator = map.keySetIterator();
-        Map<String, Object> unwrappedMap = new HashMap<>();
-        while(iterator.hasNextKey()) {
-        String key = iterator.nextKey();
-        ReadableType type = map.getType(type);
-        switch (type) {
-            case Null:
-            unwrappedMap.put(key, null);
-            break;
-            case Boolean:
-            unwrappedMap.put(key, map.getBoolean(type));
-            break;
-            case Number:
-            unwrappedMap.put(key, map.getDouble(type));
-            break;
-            case Map:
-            unwrappedMap.put(key, ReadableNativeMap.unwrapMap(map.getMap(key)));
-            break;
-            case Array:
-            unwrappedMap.put(key, map.getArray(key).unwrapArray());
-            break;
-            default:
-            throw new IllegalArgumentException("Could not convert object with key: " + key + ".");
+    static Map toMap(ReadableMap map) {
+        if (map == null) {
+            return null;
         }
+
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        for (Map.Entry<String, String> entry : map.toHashMap().entrySet()) {
+            Object value = entry.getValue();
+            hashMap.put(entry.getKey(), value == null ? null : value.toString());
         }
-        return unwrappedMap;
+
+        return hashMap;
     }
 }
