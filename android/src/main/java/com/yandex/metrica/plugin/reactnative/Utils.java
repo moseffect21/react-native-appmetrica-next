@@ -20,6 +20,7 @@ import com.yandex.metrica.profile.Attribute;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -148,12 +149,14 @@ abstract class Utils {
             return null;
         }
 
-        Map<String, String> newMap = new Map<>();
+        HashMap<String, String> hashMap = new HashMap<>();
 
         for (Map.Entry<String, String> entry : map.toHashMap().entrySet()) {
             Object value = entry.getValue();
-            newMap.put(entry.getKey(), value == null ? null : value.toString());
+            hashMap.put(entry.getKey(), value == null ? null : value.toString());
         }
+
+        Map<String, String> newMap = new HashMap<String, String>(hashMap);
 
         return newMap;
     }
