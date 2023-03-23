@@ -148,13 +148,13 @@ abstract class Utils {
             return null;
         }
 
-        HashMap<String, String> hashMap = new HashMap<>();
+        Map<String, String> newMap = new Map<>();
 
         for (Map.Entry<String, String> entry : map.toHashMap().entrySet()) {
             Object value = entry.getValue();
-            hashMap.put(entry.getKey(), value == null ? null : value.toString());
+            newMap.put(entry.getKey(), value == null ? null : value.toString());
         }
 
-        return hashMap;
+        return newMap;
     }
 }
