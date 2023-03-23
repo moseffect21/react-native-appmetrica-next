@@ -165,6 +165,16 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
     }
 
     // ECOMMERCE
+    public static <T> T getNestedValue(Map map, String... keys) {
+        Object value = map;
+
+        for (String key : keys) {
+            value = ((Map) value).get(key);
+        }
+
+        return (T) value;
+    }
+
     public ECommerceScreen createScreen(ReadableMap params) {
         ECommerceScreen screen = new ECommerceScreen().setName(params.getString("screenName")).setSearchQuery(params.getString("searchQuery"));
         return screen;
@@ -174,10 +184,10 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
         ECommercePrice actualPrice = new ECommercePrice(new ECommerceAmount(Integer.parseInt(params.getString("price")), params.getString("currency")));
         ECommerceProduct product = new ECommerceProduct(params.getString("sku")).setActualPrice(actualPrice).setName(params.getString("name"));
         if (params.hasKey("categoriesPath")) {
-            product.setCategoriesPath(params.getArray("categoriesPath"));
+            product.setCategoriesPath(toList(params.getArray("categoriesPath")));
         }
         if (params.hasKey("payload")) {
-            product.setPayload(params.getMap("payload"));
+            product.setPayload(toMap(params.getMap("payload")));
         }
         return product;
     }
