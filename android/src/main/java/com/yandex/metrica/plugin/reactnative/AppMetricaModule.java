@@ -195,7 +195,7 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
         if (params.hasKey("payload")) {
             ReadableMap payload = params.getMap("payload");
             ReadableNativeMap payloadMap = (ReadableNativeMap) payload;
-            product.setPayload(payloadMap);
+            product.setPayload(payloadMap.toJavaMap());
         }
         return product;
     }
