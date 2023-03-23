@@ -151,7 +151,7 @@ abstract class Utils {
 
         HashMap<String, String> hashMap = new HashMap<>();
 
-        for (Map.Entry<String, String> entry : map.toHashMap().entrySet()) {
+        for (Map.Entry<String, Object> entry : map.toHashMap().entrySet()) {
             Object value = entry.getValue();
             hashMap.put(entry.getKey(), value == null ? null : value.toString());
         }
