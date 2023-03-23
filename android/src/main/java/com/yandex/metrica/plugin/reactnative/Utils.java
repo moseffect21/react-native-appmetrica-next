@@ -20,6 +20,10 @@ import com.yandex.metrica.profile.Attribute;
 
 import java.util.Iterator;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
 
 abstract class Utils {
 
@@ -137,5 +141,70 @@ abstract class Utils {
         }
 
         return builder.build();
+    }
+
+    public static JSONArray toJSONArray(ReadableArray readableArray) throws JSONException {
+        JSONArray jsonArray = new JSONArray();
+
+        for (int i = 0; i < readableArray.size(); i++) {
+        ReadableType type = readableArray.getType(i);
+
+        switch (type) {
+            case Null:
+            jsonArray.put(i, null);
+            break;
+            case Boolean:
+            jsonArray.put(i, readableArray.getBoolean(i));
+            break;
+            case Number:
+            jsonArray.put(i, readableArray.getDouble(i));
+            break;
+            case String:
+            jsonArray.put(i, readableArray.getString(i));
+            break;
+            case Map:
+            jsonArray.put(i, MapUtil.toJSONObject(readableArray.getMap(i)));
+            break;
+            case Array:
+            jsonArray.put(i, ArrayUtil.toJSONArray(readableArray.getArray(i)));
+            break;
+        }
+        }
+
+        return jsonArray;
+    }
+
+    public static JSONObject toJSONObject(ReadableMap readableMap) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+
+        ReadableMapKeySetIterator iterator = readableMap.keySetIterator();
+
+        while (iterator.hasNextKey()) {
+        String key = iterator.nextKey();
+        ReadableType type = readableMap.getType(key);
+
+        switch (type) {
+            case Null:
+            jsonObject.put(key, null);
+            break;
+            case Boolean:
+            jsonObject.put(key, readableMap.getBoolean(key));
+            break;
+            case Number:
+            jsonObject.put(key, readableMap.getDouble(key));
+            break;
+            case String:
+            jsonObject.put(key, readableMap.getString(key));
+            break;
+            case Map:
+            jsonObject.put(key, MapUtil.toJSONObject(readableMap.getMap(key)));
+            break;
+            case Array:
+            jsonObject.put(key, ArrayUtil.toJSONArray(readableMap.getArray(key)));
+            break;
+        }
+        }
+
+        return jsonObject;
     }
 }

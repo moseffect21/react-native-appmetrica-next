@@ -184,10 +184,10 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
         ECommercePrice actualPrice = new ECommercePrice(new ECommerceAmount(Integer.parseInt(params.getString("price")), params.getString("currency")));
         ECommerceProduct product = new ECommerceProduct(params.getString("sku")).setActualPrice(actualPrice).setName(params.getString("name"));
         if (params.hasKey("categoriesPath")) {
-            product.setCategoriesPath(toList(params.getArray("categoriesPath")));
+            product.setCategoriesPath(Utils.toJSONArray(params.getMap("categoriesPath")));
         }
         if (params.hasKey("payload")) {
-            product.setPayload(toMap(params.getMap("payload")));
+            product.setPayload(Utils.toJSONObject(params.getMap("payload")));
         }
         return product;
     }
