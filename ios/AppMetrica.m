@@ -253,14 +253,6 @@ RCT_EXPORT_METHOD(finishCheckout:(NSArray<NSDictionary *> *)products identifier:
     [YMMYandexMetrica reportECommerce:[YMMECommerce purchaseEventWithOrder:order] onFailure:nil];
 }
 
-RCT_EXPORT_METHOD(requestAppMetricaDeviceID:(RCTResponseSenderBlock)listener)
-{
-    YMMAppMetricaDeviceIDRetrievingBlock completionBlock = ^(NSString *_Nullable appMetricaDeviceID, NSError *_Nullable error) {
-        listener(@[[self wrap:appMetricaDeviceID], [self wrap:[AppMetricaUtils stringFromRequestDeviceIDError:error]]]);
-    };
-    [YMMYandexMetrica requestAppMetricaDeviceIDWithCompletionQueue:nil completionBlock:completionBlock];
-}
-
 RCT_EXPORT_METHOD(requestDeferredDeeplink:(RCTResponseSenderBlock)listener)
 {
     // It does nothing for iOS
