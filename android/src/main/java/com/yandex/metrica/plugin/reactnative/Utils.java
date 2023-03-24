@@ -52,7 +52,7 @@ abstract class Utils {
                 for (Map.Entry<String, Object> entry : customAttributes.toHashMap().entrySet()) {
                     Object value = entry.getValue();
                     if (value != null) {
-                        userProfile.apply(Attribute.customString(entry.getKey()).withValue(value.toString()))
+                        userProfile.apply(Attribute.customString(entry.getKey()).withValue(value.toString()));
                     }
                 }
             }
