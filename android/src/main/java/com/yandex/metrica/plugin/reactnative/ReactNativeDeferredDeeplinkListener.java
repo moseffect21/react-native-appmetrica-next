@@ -10,6 +10,7 @@ package com.yandex.metrica.plugin.reactnative;
 
 import com.facebook.react.bridge.Callback;
 import com.yandex.metrica.DeferredDeeplinkListener;
+import android.util.Log;
 
 public class ReactNativeDeferredDeeplinkListener implements DeferredDeeplinkListener {
 
@@ -21,13 +22,13 @@ public class ReactNativeDeferredDeeplinkListener implements DeferredDeeplinkList
 
     @Override
     public void onDeeplinkLoaded(String deeplink) {
-        Log.i("Deeplink", "deeplink = " + deeplink);
+        Log.w("Deeplink", "deeplink = " + deeplink);
         listener.invoke(deeplink, null);
     }
 
     @Override
     public void onError(Error error, String referrer) {
-        Log.i("Deeplink", "Error: " + error.getDescription() + ", unparsed referrer: " + referrer);
+        Log.w("Deeplink", "Error: " + error.getDescription() + ", unparsed referrer: " + referrer);
         listener.invoke(null, "Error: " + error.getDescription() + ", unparsed referrer: " + referrer);
     }
 }
