@@ -85,7 +85,7 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void reportUserProfile(ReadableMap configAttributes) {
-        UserProfile user = Utils.toYandexProfileConfig(configAttributes)
+        UserProfile user = Utils.toYandexProfileConfig(configAttributes);
         YandexMetrica.setUserProfileID(configAttributes.getString("id"));
         YandexMetrica.reportUserProfile(user);
     }
