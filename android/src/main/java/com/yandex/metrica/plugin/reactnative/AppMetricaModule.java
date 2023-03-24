@@ -21,6 +21,7 @@ import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.ReadableArray;
 import com.yandex.metrica.YandexMetrica;
 import com.yandex.metrica.push.YandexMetricaPush;
+import com.yandex.metrica.profile.UserProfile;
 
 import com.yandex.metrica.ecommerce.ECommerceAmount;
 import com.yandex.metrica.ecommerce.ECommerceCartItem;
@@ -84,7 +85,9 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void reportUserProfile(ReadableMap configAttributes) {
-        YandexMetrica.reportUserProfile(Utils.toYandexProfileConfig(configAttributes));
+        UserProfile user = Utils.toYandexProfileConfig(configAttributes)
+        YandexMetrica.setUserProfileID(configAttributes.getString("id"));
+        YandexMetrica.reportUserProfile(user);
     }
 
     @ReactMethod

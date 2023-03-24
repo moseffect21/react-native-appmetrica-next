@@ -57,7 +57,6 @@ abstract class Utils {
                 }
             }
         }
-        YandexMetrica.setUserProfileID(configMap.getString("id"));
         return userProfile.build();
     }
 
