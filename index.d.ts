@@ -18,13 +18,14 @@ export type AppMetricaConfig = {
   sessionsAutoTracking?: boolean;
 };
 
-type FloorType = "male" | "female";
+type GenderType = "male" | "female";
 
 type UserProfileConfig = {
   name: string;
-  floor?: FloorType;
-  age: number;
-  isNotification: boolean;
+  gender?: GenderType;
+  age?: number;
+  notificationEnabled?: boolean;
+  customAttributes?: Object;
 };
 
 type PreloadInfo = {

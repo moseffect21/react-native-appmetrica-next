@@ -64,11 +64,11 @@
         id<YMMNameAttribute> nameAttribute = [YMMProfileAttribute name];
         [profile apply:[nameAttribute withValue:configDict[@"name"]]];
     }
-    if (configDict[@"floor"] != nil && [configDict[@"floor"] isEqualToString:@"male"]) {
+    if (configDict[@"gender"] != nil && [configDict[@"gender"] isEqualToString:@"male"]) {
         id<YMMGenderAttribute> genderAttribute = [YMMProfileAttribute gender];
         [profile apply:[genderAttribute withValue:YMMGenderTypeMale]];
     }
-    if (configDict[@"floor"] != nil && [configDict[@"floor"] isEqualToString:@"female"]) {
+    if (configDict[@"gender"] != nil && [configDict[@"gender"] isEqualToString:@"female"]) {
         id<YMMGenderAttribute> genderAttribute = [YMMProfileAttribute gender];
         [profile apply:[genderAttribute withValue:YMMGenderTypeFemale]];
     }
@@ -77,9 +77,9 @@
         id<YMMBirthDateAttribute> birthDateAttribute = [YMMProfileAttribute birthDate];
         [profile apply:[birthDateAttribute withAge:[age unsignedIntegerValue]]];
     }
-    if (configDict[@"isNotification"] != nil) {
+    if (configDict[@"notificationEnabled"] != nil) {
         id<YMMNotificationsEnabledAttribute> isNotificationAttribute = [YMMProfileAttribute notificationsEnabled];
-        [profile apply:[isNotificationAttribute withValue:configDict[@"isNotification"]]];
+        [profile apply:[isNotificationAttribute withValue:configDict[@"notificationEnabled"]]];
     }
 
     return profile;
