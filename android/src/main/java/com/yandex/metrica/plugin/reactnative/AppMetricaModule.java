@@ -108,6 +108,11 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void requestDeferredDeeplink(Callback listener) {
+        YandexMetrica.requestDeferredDeeplink(new ReactNativeDeferredDeeplinkListener(listener));
+    }
+
+    @ReactMethod
     public void reportError(String message) {
         try {
             Integer.valueOf("00xffWr0ng");

@@ -56,7 +56,7 @@ type ProductCard = {
   price: string;
   quantity: string;
   categoriesPath?: Array<string>;
-  payload?: Object<any>;
+  payload?: Object;
 };
 
 type EcommerceShowScreenParams = Screen;
@@ -71,12 +71,12 @@ declare module "react-native-appmetrica-next" {
   const getToken: () => string;
   const reportUserProfile: (config: UserProfileConfig) => void;
   const pauseSession: () => void;
-  const reportAppOpen: (deeplink: ?string) => void;
+  const reportAppOpen: (deeplink?: string) => void;
   const reportError: (error: string, reason: Object) => void;
   const reportEvent: (eventName: string, attributes?: Object) => void;
   const reportReferralUrl: (referralUrl: string) => void;
   const requestAppMetricaDeviceID: (
-    listener: (deviceId?: String, reason?: AppMetricaDeviceIdReason) => void
+    listener: (deviceId?: string, reason?: AppMetricaDeviceIdReason) => void
   ) => void;
   const resumeSession: () => void;
   const sendEventsBuffer: () => void;
@@ -84,6 +84,9 @@ declare module "react-native-appmetrica-next" {
   const setLocationTracking: (enabled: boolean) => void;
   const setStatisticsSending: (enabled: boolean) => void;
   const setUserProfileID: (userProfileID?: string) => void;
+  const requestDeferredDeeplink: (
+    listener: (deeplink?: string, reason?: string) => void
+  ) => void;
 
   const showScreen: (params: EcommerceShowScreenParams) => void;
   const showProductCard: (params: EcommerceShowProductCardParams) => void;
