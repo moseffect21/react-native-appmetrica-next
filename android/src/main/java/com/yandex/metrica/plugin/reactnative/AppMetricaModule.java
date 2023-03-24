@@ -187,7 +187,7 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
     }
 
     public ECommerceProduct createProduct(ReadableMap params) {
-        ECommercePrice actualPrice = new ECommercePrice(new ECommerceAmount(Integer.parseInt(params.getString("price")), params.getString("currency")));
+        ECommercePrice actualPrice = new ECommercePrice(new ECommerceAmount(Double.parseDouble(params.getString("price")), params.getString("currency")));
         ECommerceProduct product = new ECommerceProduct(params.getString("sku")).setActualPrice(actualPrice).setName(params.getString("name"));
         if (params.hasKey("categoriesPath")) {
             ReadableArray categories = params.getArray("categoriesPath");
@@ -207,7 +207,7 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
     public ECommerceCartItem createCartItem(ReadableMap params) {
         ECommerceScreen screen = this.createScreen(params);
         ECommerceProduct product = this.createProduct(params);
-        ECommercePrice actualPrice = new ECommercePrice(new ECommerceAmount(Integer.parseInt(params.getString("price")), params.getString("currency")));
+        ECommercePrice actualPrice = new ECommercePrice(new ECommerceAmount(Double.parseDouble(params.getString("price")), params.getString("currency")));
         ECommerceReferrer referrer = new ECommerceReferrer().setScreen(screen);
         ECommerceCartItem cartItem = new ECommerceCartItem(product, actualPrice, Integer.parseInt(params.getString("quantity"))).setReferrer(referrer);
         return cartItem;
