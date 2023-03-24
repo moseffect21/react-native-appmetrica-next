@@ -51,7 +51,7 @@ abstract class Utils {
             if (customAttributes != null) {
                 for (Map.Entry<String, Object> entry : customAttributes.toHashMap().entrySet()) {
                     Object value = entry.getValue();
-                    if (value !== null) {
+                    if (value != null) {
                         userProfile.apply(Attribute.customString(entry.getKey()).withValue(value.toString()))
                     }
                 }
