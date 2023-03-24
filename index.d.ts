@@ -21,6 +21,7 @@ export type AppMetricaConfig = {
 type GenderType = "male" | "female";
 
 type UserProfileConfig = {
+  id: string;
   name: string;
   gender?: GenderType;
   age?: number;

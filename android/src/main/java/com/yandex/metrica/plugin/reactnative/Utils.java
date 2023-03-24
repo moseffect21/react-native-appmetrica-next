@@ -46,6 +46,18 @@ abstract class Utils {
         if (configMap.hasKey("notificationEnabled")) {
             userProfile.apply(Attribute.notificationsEnabled().withValue(configMap.getBoolean("notificationEnabled")));
         }
+        if (configMap.hasKey("customAttributes")) {
+            ReadableMap customAttributes = configMap.getMap("customAttributes");
+            if (customAttributes != null) {
+                for (Map.Entry<String, Object> entry : customAttributes.toHashMap().entrySet()) {
+                    Object value = entry.getValue();
+                    if (value !== null) {
+                        userProfile.apply(Attribute.customString(entry.getKey()).withValue(value.toString()))
+                    }
+                }
+            }
+        }
+        YandexMetrica.setUserProfileID(configMap.getString("id"));
         return userProfile.build();
     }
 
