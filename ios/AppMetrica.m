@@ -52,6 +52,7 @@ RCT_EXPORT_METHOD(activate:(NSDictionary *)configDict)
 
 RCT_EXPORT_METHOD(reportUserProfile:(NSDictionary *)configDict)
 {
+    [YMMYandexMetrica setUserProfileID:configDict[@"id"]];
     [YMMYandexMetrica reportUserProfile:[AppMetricaUtils configurationForUserProfile:configDict] onFailure:^(NSError *error) {
         NSLog(@"Error: %@", error);
     }];
