@@ -64,6 +64,10 @@ export default {
     AppMetrica.requestAppMetricaDeviceID(listener);
   },
 
+  requestDeferredDeeplink(listener) {
+    AppMetrica.requestDeferredDeeplink(listener);
+  },
+
   resumeSession() {
     AppMetrica.resumeSession();
   },
