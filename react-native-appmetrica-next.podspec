@@ -9,13 +9,13 @@ Pod::Spec.new do |s|
   s.homepage     = package["homepage"]
   s.license      = package["license"]
   s.authors      = { "Yandex LLC" => "appmetrica@yandex-team.com" }
-  s.platforms    = { :ios => "13.0" }
+  s.platforms    = { :ios => "9.0" }
   s.source       = { :git => "https://github.com/yandexmobile/react-native-appmetrica-next.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,swift}"
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency 'YandexMobileMetrica', '4.4.0'
+  s.dependency 'YandexMobileMetrica', '4.5.0'
   s.dependency 'YandexMobileMetricaPush', '1.3.0'
 end
