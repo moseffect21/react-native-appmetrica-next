@@ -81,6 +81,15 @@
         id<YMMNotificationsEnabledAttribute> isNotificationAttribute = [YMMProfileAttribute notificationsEnabled];
         [profile apply:[isNotificationAttribute withValue:configDict[@"notificationEnabled"]]];
     }
+    if (configDict[@"customAttributes"] != nil) {
+        NSDictionary *customAttributes = configDict[@"customAttributes"];
+        if (customAttributes != nil) {
+            for (NSString *key in customAttributes) {
+                id<YMMCustomStringAttribute> customStringAttribute = [YMMProfileAttribute customString:key];
+                [profile apply:[customStringAttribute withValue:customAttributes[key]]];
+            }
+        }
+    }
 
     return profile;
 }
