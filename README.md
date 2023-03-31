@@ -102,7 +102,7 @@ implementation 'com.yandex.android:mobmetricalib:5.3.0'
 implementation "com.yandex.android:mobmetricapushlib:2.2.0"
 ```
 
-## create file BroadcastReceiver in you project
+## create file SilentPushReceiver in you project
 
 ```js
 import android.content.BroadcastReceiver;
