@@ -95,6 +95,13 @@ new MetricaMessagingService().processPush(this, message);
 
 ## Silent Push Notifications for Android
 
+add dependencies in build.gradle
+
+```
+implementation 'com.yandex.android:mobmetricalib:5.3.0'
+implementation "com.yandex.android:mobmetricapushlib:2.2.0"
+```
+
 ## create file BroadcastReceiver in you project
 
 ```js
