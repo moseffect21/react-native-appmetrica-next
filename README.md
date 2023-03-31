@@ -51,6 +51,8 @@ RNAppMetrica.reportUserProfile({
 
 ## NEXT for Android
 
+yandex official doc https://appmetrica.yandex.ru/docs/mobile-sdk-dg/push/android-initialize.html
+
 ## create file FirebaseMessagingMasterService.java in you project
 
 ```js
@@ -138,6 +140,8 @@ public class SilentPushReceiver extends BroadcastReceiver {
 ```
 
 # NEXT for iOS
+
+yandex official doc https://appmetrica.yandex.ru/docs/mobile-sdk-dg/push/ios-initialize.html
 
 ### file AppDelegate.m add
 
