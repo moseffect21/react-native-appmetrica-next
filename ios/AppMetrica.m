@@ -8,7 +8,7 @@
 
 #import <React/RCTConvert.h>
 #import "AppMetrica.h"
-// #import <Firebase/Firebase.h>
+#import <Firebase/Firebase.h>
 #import "AppMetricaUtils.h"
 #import <YandexMobileMetricaPush/YMPYandexMetricaPush.h>
 
@@ -63,12 +63,12 @@ RCT_EXPORT_METHOD(reportUserProfile:(NSDictionary *)configDict)
 RCT_EXPORT_METHOD(initPush:(NSData *)deviceToken)
 {
 
-//     #ifdef DEBUG
-//        YMPYandexMetricaPushEnvironment pushEnvironment = YMPYandexMetricaPushEnvironmentDevelopment;
-//     #else
-//        YMPYandexMetricaPushEnvironment pushEnvironment = YMPYandexMetricaPushEnvironmentProduction;
-//     #endif
-//    [YMPYandexMetricaPush setDeviceTokenFromData:[FIRMessaging messaging].APNSToken pushEnvironment:pushEnvironment];
+    #ifdef DEBUG
+       YMPYandexMetricaPushEnvironment pushEnvironment = YMPYandexMetricaPushEnvironmentDevelopment;
+    #else
+       YMPYandexMetricaPushEnvironment pushEnvironment = YMPYandexMetricaPushEnvironmentProduction;
+    #endif
+   [YMPYandexMetricaPush setDeviceTokenFromData:[FIRMessaging messaging].APNSToken pushEnvironment:pushEnvironment];
     // need to fix
     
 }
