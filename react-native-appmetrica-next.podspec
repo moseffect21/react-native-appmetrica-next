@@ -1,6 +1,9 @@
 require "json"
 
+appPackage = JSON.parse(File.read(File.join('..', '@react-native-firebase', 'app', 'package.json')))
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
+
+firebase_sdk_version = appPackage['sdkVersions']['ios']['firebase']
 
 Pod::Spec.new do |s|
   s.name         = "react-native-appmetrica-next"
@@ -18,6 +21,8 @@ Pod::Spec.new do |s|
   s.dependency "React"
   s.dependency 'YandexMobileMetrica', '4.5.0'
   s.dependency 'YandexMobileMetricaPush', '1.3.0'
-  s.dependency 'Firebase'
-  s.dependency 'Firebase/Messaging'
+
+  #firebase dependencies
+  s.dependency 'FirebaseCoreExtension', firebase_sdk_version
+  s.dependency 'Firebase/Messaging', firebase_sdk_version
 end
