@@ -48,6 +48,9 @@
     if (configDict[@"statisticsSending"] != nil) {
         configuration.statisticsSending = [configDict[@"statisticsSending"] boolValue];
     }
+    if (configDict[@"revenueAutoTrackingEnabled"] != nil) {
+        configuration.revenueAutoTrackingEnabled = [configDict[@"revenueAutoTrackingEnabled"] boolValue];
+    }
 
     return configuration;
 }

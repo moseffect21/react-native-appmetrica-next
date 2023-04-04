@@ -9,6 +9,7 @@ export type AppMetricaConfig = {
   sessionTimeout?: number;
   statisticsSending?: boolean;
   preloadInfo?: PreloadInfo;
+  revenueAutoTrackingEnabled?: boolean;
   // Only Android
   installedAppCollecting?: boolean;
   maxReportsInDatabaseCount?: number;

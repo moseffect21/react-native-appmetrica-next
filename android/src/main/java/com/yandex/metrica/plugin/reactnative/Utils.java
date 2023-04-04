@@ -98,6 +98,9 @@ abstract class Utils {
         if (configMap.hasKey("statisticsSending")) {
             builder.withStatisticsSending(configMap.getBoolean("statisticsSending"));
         }
+        if (configMap.hasKey("revenueAutoTrackingEnabled")) {
+            builder.withRevenueAutoTrackingEnabled(configMap.getBoolean("revenueAutoTrackingEnabled"));
+        }
 
         return builder.build();
     }
